@@ -1,0 +1,8 @@
+library(rvest)
+library(dplyr)
+library(tidyr)
+library(purrr)
+library(stringr)
+library(glue)
+library(readr)
+library(box)
