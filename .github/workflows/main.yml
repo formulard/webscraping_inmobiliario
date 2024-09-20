@@ -6,7 +6,7 @@ on:
 name: Run Webscraping
 
 jobs:
-  build-deploy:
+  webscraping:
     runs-on: ubuntu-latest
     permissions:
       contents: write
