@@ -112,7 +112,7 @@ get_property_data <- function(url_casa) {
 
 #'@export
 tidy_property_data <- function(df) {
-  df %>%
+  df |>
     tidyr::separate(precio, into = c("divisa", "precio"), sep = " ") |>
     dplyr::mutate(
       precio = readr::parse_number(precio),
