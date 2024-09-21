@@ -50,10 +50,14 @@ get_property_data <- function(url_casa) {
 
   url_casa <- paste0("https://www.supercasas.com", url_casa)
 
-
   html <- rvest::read_html(url_casa)
 
   add_id <- stringr::str_extract(url_casa, "\\d+")
+
+  offer_type <- html |>
+    rvest::html_element(".detail-ad-info-specs-block.main-info div:nth-child(3)") |>
+    rvest::html_text() |>
+    stringr::str_extract(".+(?=:)")
 
   tipo_vivienda <- html |>
     rvest::html_nodes("#detail-ad-header h2") |>
@@ -102,6 +106,7 @@ get_property_data <- function(url_casa) {
 
   data.frame(
     id = add_id,
+    operation_type = offer_type,
     scrape_date = scrape_date,
     tipo_vivienda = tipo_vivienda,
     precio = precio,
