@@ -2,7 +2,7 @@
 box::use(
   stringr[str_detect],
   dplyr[filter],
-  purrr[map, possibly],
+  purrr[map, possibly, set_names],
   dplyr[bind_rows, as_tibble]
 )
 
@@ -20,6 +20,7 @@ provincias <- supercasas$provincias |>
   filter(str_detect(provincia_name, "Santo Domingo|Punta Cana"))
 
 today_urls <- provincias$provincia_id |>
+  set_ames(provincias$provincia_name)
   map(
     \(provincia_code) {
       supercasas$get_url_propiedades(provincia_code)

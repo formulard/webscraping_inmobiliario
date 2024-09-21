@@ -11,8 +11,8 @@ box::use(
 #' 
 #' @export
 get_url <- function(code_provincia = "10005", skip = 0) {
-  glue::glue('https://www.supercasas.com/buscar/?Locations=10005&PagingPageSkip=0') |>
-    rvest::read_html() |> 
+  glue::glue('https://www.supercasas.com/buscar/?Locations={code_provincia}&PagingPageSkip={skip}') |>
+    rvest::read_html() |>
     rvest::html_elements('#bigsearch-results-inner-container ul li a') |>
     rvest::html_attr('href') |>
     stringr::str_subset(
@@ -50,7 +50,10 @@ get_property_data <- function(url_casa) {
 
   url_casa <- paste0("https://www.supercasas.com", url_casa)
 
+
   html <- rvest::read_html(url_casa)
+
+  add_id <- stringr::str_extract(url_casa, "\\d+")
 
   tipo_vivienda <- html |>
     rvest::html_nodes("#detail-ad-header h2") |>
@@ -98,6 +101,7 @@ get_property_data <- function(url_casa) {
     base::paste(collapse = ", ")
 
   data.frame(
+    id = add_id,
     scrape_date = scrape_date,
     tipo_vivienda = tipo_vivienda,
     precio = precio,
