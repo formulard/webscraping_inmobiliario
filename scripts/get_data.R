@@ -20,7 +20,7 @@ provincias <- supercasas$provincias |>
   filter(str_detect(provincia_name, "Santo Domingo|Punta Cana"))
 
 today_urls <- provincias$provincia_id |>
-  set_ames(provincias$provincia_name)
+  set_names(provincias$provincia_name)
   map(
     \(provincia_code) {
       supercasas$get_url_propiedades(provincia_code)
