@@ -12,4 +12,4 @@ tryCatch(
 )
 
 options(box.path = here::here())
-log_layout(layout_glue_colors)
+logger::log_layout(logger::layout_glue_colors)
