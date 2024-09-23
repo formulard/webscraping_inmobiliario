@@ -54,5 +54,7 @@ data_supercasas <- data_supercasas |>
 
 all_urls <- c(url_supercasas, new_urls)
 
-saveRDS(data_supercasas, "data/supercasas/data_supercasas.rds")
-saveRDS(all_urls, "data/supercasas/url_supercasas.rds")
+if (nrow(new_data_supercasas) > 0) {
+  saveRDS(data_supercasas, "data/supercasas/data_supercasas.rds")
+  saveRDS(all_urls, "data/supercasas/url_supercasas.rds")
+}
