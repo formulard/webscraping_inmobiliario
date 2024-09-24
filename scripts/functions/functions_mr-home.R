@@ -51,4 +51,5 @@ get_url_propiedades <- function(driver, city_code = 156, start_page = 1, end_pag
 
 rD <- rsDriver(browser = "firefox")
 remDr <- rD[["client"]]
+
 url_propiedades <- get_url_propiedades(remDr)
