@@ -19,13 +19,13 @@ get_url <- function(driver, city_code = "156", page = 1) {
     driver$navigate(url)
     Sys.sleep(0.5)
 
-    html <- remDr$getPageSource()[[1]]
+    html <- driver$getPageSource()[[1]]
     
     read_html(html) |>
         html_elements(".property-holder div #featured a") |>
         html_attr("href")
 }
-    
+
 get_url_propiedades <- function(driver, city_code = 156, start_page = 1, end_page = NULL) {
     url <- glue("https://www.mrhome.com.do/propiedades?city={ city_code }&page={ start_page }")
     
