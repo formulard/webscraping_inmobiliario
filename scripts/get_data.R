@@ -6,7 +6,7 @@ box::use(
   purrr[map, possibly, set_names],
   dplyr[bind_rows, as_tibble],
   glue[glue],
-  logger[log_info]
+  logger[log_info, log_success]
 )
 
 box::use(
