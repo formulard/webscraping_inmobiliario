@@ -1,4 +1,4 @@
-log_info("Pacakges and source files") #  ---------------------------------------------------------
+logger::log_info("Pacakges and source files") #  ---------------------------------------------------------
 
 box::use(
   stringr[str_detect],
@@ -6,6 +6,7 @@ box::use(
   purrr[map, possibly, set_names],
   dplyr[bind_rows, as_tibble],
   glue[glue],
+  logger[log_info]
 )
 
 box::use(
