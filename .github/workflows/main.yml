@@ -25,7 +25,7 @@ jobs:
       - name: Setup system dependencies
         run: >
           sudo apt-get update && sudo apt-get install --yes
-          libcurl4-openssl-dev libsodium-dev libmkl-rt libglpk-dev libxml2-dev libicu-dev
+          libcurl4-openssl-dev libsodium-dev libmkl-rt libglpk-dev libxml2-dev libicu-dev libicu70
 
       - name: Restore non-renv packages from cache
         uses: actions/cache@v2
