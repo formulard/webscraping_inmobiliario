@@ -7,7 +7,7 @@ name: Run Webscraping
 
 jobs:
   webscraping:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     permissions:
       contents: write
     steps:
@@ -21,19 +21,6 @@ jobs:
         uses: r-lib/actions/setup-r@v2
         with:
           r-version: ${{ env.R_VERSION }}
-
-      - name: Install ICU library
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y wget build-essential
-          wget https://github.com/unicode-org/icu/releases/download/release-70-1/icu4c-70_1-src.tgz
-          tar -xvzf icu4c-70_1-src.tgz
-          cd icu/source
-          ./configure
-          make -j$(nproc)
-          sudo make install
-        env:
-          DEBIAN_FRONTEND: noninteractive
           
       - name: Setup system dependencies
         run: |
