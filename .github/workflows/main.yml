@@ -50,6 +50,7 @@ jobs:
         run: |
           options(renv.config.cache.symlinks = FALSE)
           renv::restore(clean = TRUE)
+          install.packages('withr')
 
       - name: Webscrap data
         run: |
