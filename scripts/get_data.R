@@ -42,20 +42,24 @@ new_data_supercasas <- new_urls |>
     possibly(supercasas$get_property_data, data.frame()),
     .progress = TRUE
   ) |>
-  bind_rows() |>
-  supercasas$tidy_property_data()
+  bind_rows()
 
 log_success(glue("{nrow(new_data_supercasas)} downloaded from supercasas.com"))
 
+
 log_info("Update hitorical files") # ------------------------------------------------------------
 
-data_supercasas <- data_supercasas |>
-  bind_rows(new_data_supercasas) |>
-  as_tibble()
-
-all_urls <- c(url_supercasas, new_urls)
 
 if (nrow(new_data_supercasas) > 0) {
+  new_data_supercasas <- new_data_supercasas |>
+    supercasas$tidy_property_data()
+
+  data_supercasas <- data_supercasas |>
+    bind_rows(new_data_supercasas) |>
+    as_tibble()
+  
+  all_urls <- c(url_supercasas, new_urls)
+
   saveRDS(data_supercasas, "data/supercasas/data_supercasas.rds")
   saveRDS(all_urls, "data/supercasas/url_supercasas.rds")
 }
