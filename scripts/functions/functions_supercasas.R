@@ -2,6 +2,7 @@ box::use(
   glue[glue],
   rvest[read_html, html_elements, html_attr],
   stringr[str_subset],
+  
 )
 
 #' Get properties url from a single page

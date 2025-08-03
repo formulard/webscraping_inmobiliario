@@ -51,6 +51,7 @@ jobs:
           options(renv.config.cache.symlinks = FALSE)
           renv::restore(clean = TRUE)
           install.packages('withr')
+          install.packages('tidyr')
 
       - name: Webscrap data
         run: |
